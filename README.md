@@ -1,6 +1,6 @@
 # BotMates
 
-A front-end React application to search users
+A front-end React application to search users.
 To run the project:
 
 1. Clone this repo
