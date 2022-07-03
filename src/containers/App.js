@@ -1,49 +1,41 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
 import "./App.css";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      bots: [],
-      searchfield: "",
-    };
-  }
+function App() {
+  const [bots, setBots] = useState([]);
+  const [searchfield, setSearchfield] = useState("");
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((users) => this.setState({ bots: users }));
-  }
+      .then((users) => setBots(users));
+  }, []);
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
+  const onSearchChange = (event) => {
+    setSearchfield(event.target.value);
   };
 
-  render() {
-    const { bots, searchfield } = this.state;
-    const filteredBots = bots.filter((bot) => {
-      return bot.name.toLowerCase().includes(searchfield.toLowerCase());
-    });
+  const filteredBots = bots.filter((bot) => {
+    return bot.name.toLowerCase().includes(searchfield.toLowerCase());
+  });
 
-    return !bots.length ? (
-      <h1>Loading...</h1>
-    ) : (
-      <div className="tc">
-        <h1 className="f1">BotMates</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <Scroll>
-          <ErrorBoundary>
-            <CardList bots={filteredBots} />
-          </ErrorBoundary>
-        </Scroll>
-      </div>
-    );
-  }
+  return !bots.length ? (
+    <h1>Loading...</h1>
+  ) : (
+    <div className="tc">
+      <h1 className="f1">BotMates</h1>
+      <SearchBox searchChange={onSearchChange} />
+      <Scroll>
+        <ErrorBoundary>
+          <CardList bots={filteredBots} />
+        </ErrorBoundary>
+      </Scroll>
+    </div>
+  );
 }
 
 export default App;
