@@ -1,10 +1,31 @@
 # BotMates
 
-A front-end React application to search users.
-To run the project:
+## 🚀 About Me
 
-1. Clone this repo
-2. Run `npm install`
-3. Run `npm start`
+A front-end React application to search users using RoboHash API.
 
-The application is live on: https://sttvk.github.io/botmates/
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/sttvk/botmates.git
+```
+
+Go to the project directory
+
+```bash
+  cd botmates
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
