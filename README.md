@@ -29,3 +29,7 @@ Start the server
 ```bash
   npm run start
 ```
+
+## Credits
+
+[The Complete Web Developer in 2022: Zero to Mastery](https://www.udemy.com/course/the-complete-web-developer-zero-to-mastery/learn/lecture/8803510?start=0#overview)
